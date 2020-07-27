@@ -9,7 +9,12 @@ const { List,Task } = require('./db/modules');
 
 
 app.use(bodyParser.json());
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); 
+    res.header("Access-Control-Allow-Methods","GET,POST,HEAD,OPTIONS,PUT,PATCH,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 app.get('/lists',(req,res)=>{
 //    show the list
@@ -18,7 +23,7 @@ app.get('/lists',(req,res)=>{
     }).catch((e)=>{
         res.send(e);
     });
-});
+})
 
 app.post('/lists',(req,res)=>{
     // return new lsit
@@ -33,10 +38,10 @@ app.post('/lists',(req,res)=>{
     })
 });
 
-app.delete('/lists/:Id',(req,res)=>{
+app.delete('/lists/:id',(req,res)=>{
 //    dlelte the list
     List.findOneAndRemove({
-        _id:req.params.Id
+        _id:req.params.id
         })    .then((removedlistDoc)=>{
                 res.send(removedlistDoc);
 
@@ -44,13 +49,13 @@ app.delete('/lists/:Id',(req,res)=>{
     
 });
 
-app.patch('/lists/:Id',(req,res)=>{
+app.patch('/lists/:id',(req,res)=>{
     // update the specified lsit
-    List.findOneAndUpdate({_id:req.params.Id},{
+    List.findOneAndUpdate({_id:req.params.id},{
         $set:req.body
     }).then(()=>{
-        res.sendStatus(200);
-        // res.send({ message: "list Updated Successfully" });
+        // res.sendStatus(200);
+        res.send({' message': 'list Updated Successfully' });
     })
 });
 
@@ -85,15 +90,15 @@ app.post('/lists/:listId/tasks', (req, res) => {
     })
 });
 
-app.patch('/lists/:listId/tasks/:Id', (req, res) => {
+app.patch('/lists/:listId/tasks/:taskId', (req, res) => {
     Task.findOneAndUpdate({
         _id: req.params.taskId,
         _listId: req.params.listId
     }, {
         $set: req.body
     }).then(() => {
-        // res.send({ message: "Task Updated Successfully" });
-        res.sendStatus(200);
+        res.send({ message: "Task Updated Successfully" });
+        // res.sendStatus(200);
     })
 });
 

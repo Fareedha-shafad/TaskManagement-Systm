@@ -1,41 +1,37 @@
-<div class=" centercontent">
-  <div class=" taskview">
-
-      <div class="sidebar ">
-        <h3 class="title text-primary">LISTS</h3>
-
-           <div class="listmenu">
-              <a class="list menu item">
-                 <p>List 1</p>
-             </a>
-             <a class="list menu item">
-               <p>List 1</p>
-             </a>
-            </div>
-    
-
-      <button class="button bg-primary text-white">+LIST </button>
-
-
-      </div>
-
-  <div class="containertasklist ">
-    <h2 class="title text-primary ">TASKS</h2>
-
+ <div class="wrapper">
+    <div class="sidebar">
+       <h2>lists</h2>
+       <ul>
+          <li> <a  *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
+             <p  class="listmenu item">{{ list.title }}</p></a> 
+          </li>
  
-       <div class="task">
-          <a >some thiing to do</a>
-       </div>
-       
-       <div class="task">
-        <p>some thiing to do</p>
-     </div>
-     
-     <div class="task">
-      <p>some thiing to do</p>
+       </ul>
+       <button class="button is-primary has-text-white" routerLink="/new-list">+ New List</button>
+    </div>
    </div>
 
- </div>
-</div>  
-</div>
-
+    <!-- -------taskview panel -->
+ 
+    
+     <!-- <div class="row">
+      <div class="col-lg-6"></div>
+      <div class="col-lg-12"> -->
+         
+        
+          <!-- <div class="main-todo-input-wrap"> -->
+            <div class="container-fluid">
+                  <h2 class="head title">TASKS</h2>
+             
+                    <a class="tasklistas" *ngFor="let task of tasks" (click)="onTaskClick(task)" [ngClass]="{ 'text-success': task.completed }" >
+                       
+                        <h5>{{task.title}}</h5>
+                        <hr>
+                     </a>  
+                        
+              <button class="addbtn" routerLink="./new-task">ADD TASK</button>
+          </div>
+         <!-- </div>
+       </div> 
+   -->
+ 

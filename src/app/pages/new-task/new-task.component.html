@@ -1,0 +1,11 @@
+
+  <div class="container-fluid">
+    <h2 class="head title">Create a new Task</h2>
+    <input #taskTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter Task name...">
+<!-- 
+      <a class="tasklistas" >
+          <h5>{{task.title}}</h5>
+          <hr>
+       </a>      -->
+<button class="addbtn" (click)="createTask(taskTitleInput.value)">Create</button>
+</div>
