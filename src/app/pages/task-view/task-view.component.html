@@ -9,6 +9,7 @@
        </ul>
        <button class="button is-primary has-text-white" routerLink="/new-list">+ New List</button>
     </div>
+
    </div>
 
     <!-- -------taskview panel -->
@@ -20,18 +21,21 @@
          
         
           <!-- <div class="main-todo-input-wrap"> -->
-            <div class="container-fluid">
+            <div class="container-fluid" >
                   <h2 class="head title">TASKS</h2>
              
                     <a class="tasklistas" *ngFor="let task of tasks" (click)="onTaskClick(task)" [ngClass]="{ 'text-success': task.completed }" >
                        
                         <h5>{{task.title}}</h5>
+                     
                         <hr>
+                     
                      </a>  
                         
               <button class="addbtn" routerLink="./new-task">ADD TASK</button>
+              
           </div>
-         <!-- </div>
-       </div> 
-   -->
+     
+
+
  

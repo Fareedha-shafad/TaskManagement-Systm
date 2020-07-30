@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
- html{   
-  /* background:linear-gradient(90deg,turquoise,green);   */
+  /* html{    
+   background:linear-gradient(90deg,turquoise,green);   
 
-    background: #f3f5f9; 
- }   
+    /* background: #f3f5f9;  */
+  /* }     */
+  /* *{ */
+    /* margin:0; */
+  /* } */
 
